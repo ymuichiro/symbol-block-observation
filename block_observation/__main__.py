@@ -63,5 +63,9 @@ async def block_observation():
                 )
 
 
-asyncio.get_event_loop().run_until_complete(block_observation())
-asyncio.get_event_loop().run_forever()
+loop = asyncio.new_event_loop()
+loop.run_until_complete(block_observation())
+try:
+    loop.run_forever()
+finally:
+    loop.close()
